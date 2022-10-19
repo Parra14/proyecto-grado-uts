@@ -11,7 +11,7 @@ export class TasksService {
   private urlApi: string="";
 
   constructor(private http: HttpClient) {
-      this.urlApi = environment.apiURL+'/api';
+      this.urlApi = 'http://localhost:4000/api';
    }
 
 
