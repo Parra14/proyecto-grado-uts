@@ -9,24 +9,28 @@ import { User } from '../models/user';
 })
 export class UsersServicesService {
 
-  constructor(private http: HttpClient) { }
-  apiURL = 'http://localhost:4000/api';
+  private urlApi: string="";
+
+  constructor(private http: HttpClient) { 
+    this.urlApi = environment.apiURL+'/api';
+  }
+
   getusers(): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-users');
+    return this.http.get(this.urlApi + '/get-users');
   }
   deleteuser(id: string): Observable<any> {
-    return this.http.delete(environment.apiURL + '' + id);
+    return this.http.delete(this.urlApi + '' + id);
   }
 
   createuser(user: User): Observable<any> {
-    return this.http.post(environment.apiURL + '/create-pc', user);
+    return this.http.post(this.urlApi + '/create-pc', user);
   }
 
   getuser(id: string): Observable<any> {
-    return this.http.get(environment.apiURL + '' + id);
+    return this.http.get(this.urlApi + '' + id);
   }
 
   editarProducto(id: string, user: User): Observable<any> {
-    return this.http.put(environment.apiURL + '' + id, user);
+    return this.http.put(this.urlApi + '' + id, user);
   }
 }

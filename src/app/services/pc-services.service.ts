@@ -8,27 +8,30 @@ import { PC } from '../models/pc';
   providedIn: 'root'
 })
 export class PcServicesService {
-  apiURL = 'http://localhost:4000/api';
-  constructor(private http: HttpClient) { }
+  private urlApi: string="";
+
+  constructor(private http: HttpClient) { 
+      this.urlApi = environment.apiURL+'/api';
+  }
   
 
   getPC(): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-pcs');
+    return this.http.get(this.urlApi + '/get-pcs');
   }
 
   eliminarPC(id: string): Observable<any> {
-    return this.http.delete(environment.apiURL + '/delete-pc/' + id);
+    return this.http.delete(this.urlApi + '/delete-pc/' + id);
   }
 
   guardarPC(pc: PC): Observable<any> {
-    return this.http.post(environment.apiURL + '/create-pc', pc);
+    return this.http.post(this.urlApi + '/create-pc', pc);
   }
 
   obtenerPC(id: string): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-pcs/' + id);
+    return this.http.get(this.urlApi + '/get-pcs/' + id);
   }
 
   editarPC(id: string, pc: PC): Observable<any> {
-    return this.http.put(environment.apiURL + '/update-pc/' + id, pc);
+    return this.http.put(this.urlApi + '/update-pc/' + id, pc);
   }
 }

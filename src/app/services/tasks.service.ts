@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -7,17 +8,19 @@ import {HttpClient} from '@angular/common/http'
 })
 export class TasksService {
 
-  private URL = 'http://localhost:4000/api'
+  private urlApi: string="";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      this.urlApi = environment.apiURL+'/api';
+   }
 
-  apiURL = 'http://localhost:4000/api';
+
   getTasks(){
-    return this.http.get<any>(this.URL + '/tasks');
+    return this.http.get<any>(this.urlApi + '/tasks');
   }
 
   getPrivateTasks(){
-    return this.http.get<any>(this.URL + '/private-tasks');
+    return this.http.get<any>(this.urlApi + '/private-tasks');
   }
 
 }

@@ -9,25 +9,29 @@ import { Peripherals } from '../models/peripherals';
 })
 export class PeripheralsServicesService {
 
-  constructor(private http: HttpClient) { }
-  apiURL = 'http://localhost:4000/api';
+  private urlApi: string="";
+
+  constructor(private http: HttpClient) { 
+    this.urlApi = environment.apiURL+'/api';
+  }
+
   getPeripherals(): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-Peripherals');
+    return this.http.get(this.urlApi + '/get-Peripherals');
   }
 
   eliminarPeripherals(id: string): Observable<any> {
-    return this.http.delete(environment.apiURL + '/delete-Peripherals/' + id);
+    return this.http.delete(this.urlApi + '/delete-Peripherals/' + id);
   }
 
   guardarPeripherals(peripherals: Peripherals): Observable<any> {
-    return this.http.post(environment.apiURL + '/create-Peripherals', peripherals);
+    return this.http.post(this.urlApi + '/create-Peripherals', peripherals);
   }
 
   obtenerPeripherals(id: string): Observable<any> {
-    return this.http.get(environment.apiURL + '/get-Peripherals/' + id);
+    return this.http.get(this.urlApi + '/get-Peripherals/' + id);
   }
 
   editarPeripherals(id: string, peripherals: Peripherals): Observable<any> {
-    return this.http.put(environment.apiURL + '/update-Peripherals/' + id, peripherals);
+    return this.http.put(this.urlApi + '/update-Peripherals/' + id, peripherals);
   }
 }
