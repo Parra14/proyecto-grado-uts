@@ -8,8 +8,9 @@ import { PC } from '../models/pc';
   providedIn: 'root'
 })
 export class PcServicesService {
-
+  apiURL = 'http://localhost:4000/api';
   constructor(private http: HttpClient) { }
+  
 
   getPC(): Observable<any> {
     return this.http.get(environment.apiURL + '/get-pcs');

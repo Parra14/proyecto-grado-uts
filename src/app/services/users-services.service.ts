@@ -10,7 +10,7 @@ import { User } from '../models/user';
 export class UsersServicesService {
 
   constructor(private http: HttpClient) { }
-
+  apiURL = 'http://localhost:4000/api';
   getusers(): Observable<any> {
     return this.http.get(environment.apiURL + '/get-users');
   }

@@ -11,7 +11,7 @@ export class TasksService {
 
   constructor(private http: HttpClient) { }
 
-
+  apiURL = 'http://localhost:4000/api';
   getTasks(){
     return this.http.get<any>(this.URL + '/tasks');
   }

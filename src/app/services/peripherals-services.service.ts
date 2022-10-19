@@ -10,7 +10,7 @@ import { Peripherals } from '../models/peripherals';
 export class PeripheralsServicesService {
 
   constructor(private http: HttpClient) { }
-
+  apiURL = 'http://localhost:4000/api';
   getPeripherals(): Observable<any> {
     return this.http.get(environment.apiURL + '/get-Peripherals');
   }
